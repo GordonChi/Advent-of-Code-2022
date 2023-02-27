@@ -41,19 +41,26 @@ def main():
     # Done with file, can close it
     file.close()
 
-    print (len(master_list))
-
     # Iterate through the master_list. Keep track of who has the most
     # calories and keep track of its position in the list
 
+    sorted_list = []
     max_calories = 0
     position = 0
+
     for i in range (0, len(master_list)):
         if (sum(master_list[i]) > max_calories):
             position = i
             max_calories = sum(master_list[i])
+        sorted_list.append(sum(master_list[i]))
+    
+    sorted_list.sort(reverse=True)
+
+
+    elf_sum = sum(sorted_list[:3:])
     
 
     print("The elf with the most calories occurs at position", str(position), "with a calorie count of",
     max_calories)
+    print("The three top elves carried a net total of", elf_sum, "calories.")
 main()
